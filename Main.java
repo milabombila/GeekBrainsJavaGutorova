@@ -1,81 +1,78 @@
-package osnovy.programmirovaniya;
+package geekbrains;
 
-import java.io.InputStream;
+import org.w3c.dom.ls.LSOutput;
 
+import java.util.Arrays;
+
+//  System.out.println(Arrays.toString(arr));
 public class Main {
 
+
     public static void main(String[] args) {
-        byte k = 8;
-        short l = 16;
-        int m = 32;
-        long n = 64;
-        float o = (float) 32.1;
-        double p = 64.0000002;
-        char q = 'e';
-        boolean r = false;
-        checkTheNumber(5,13);
-        IsPositive(-10);
-    }
-//public class result {
-//Написать метод вычисляющий выражение a * (b + (c / d)) и возвращающий результат,
-//где a, b, c, d – аргументы этого метода, имеющие тип float.
-
-            public static float methodFindE(float a1, float b1, float c1, float d1, float e1) {
-                a1 = (float) 1.0;
-                b1 = (float) 2.0;
-                c1 = (float) 3.0;
-                d1 = (float) 4.0;
-                return e1 = a1 * (b1 + (c1 / d1));
-            }
-
-            //Написать метод, принимающий на вход два целых числа и проверяющий,
-            // что их сумма лежит в пределах от 10 до 20 (включительно),
-            // если да – вернуть true, в противном случае – false.
-            public static boolean checkTheNumber(int a2, int b2){
-            int c2 = a2 + b2;
-            if (10 <= c2 && c2 <= 20) {
-                return true;
+        int[] changeOneToZero = new int[]{1, 1, 1, 0, 0, 0};
+        for (int i = 0; i < changeOneToZero.length; i++) {
+            if (changeOneToZero[i] == 0) {
+                changeOneToZero[i] = 1;
             } else {
-                return false;
+                changeOneToZero[i] = 0;
             }
         }
-//Написать метод, которому в качестве параметра передается целое число,
-//метод должен напечатать в консоль,
-//положительное ли число передали или отрицательное.
-//Замечание: ноль считаем положительным числом.
-            public static void IsPositive(int a3) {
-                    if (a3 <=0) {
-                        System.out.println( a3 + " is negative");
-                    } else {
-                        System.out.println( a3 + " is positive");
-                    }
+        System.out.println(Arrays.toString(changeOneToZero));
+
+        int[] putTheNumbers = new int[8];
+        for (int i = 0; i < putTheNumbers.length; i++) {
+            putTheNumbers[i] = i * 3;
+            System.out.println(Arrays.toString(putTheNumbers));
         }
-        // Написать метод, которому в качестве параметра передается целое число.
-    // Метод должен вернуть true, если число отрицательное.
-    public static boolean isNegative (int a4) {
-        if (a4 <= 0) {
-            return true;
-        } else {
-            return false;
+
+        int[] checkTheNumbers = new int[]{1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        for (int i = 0; i < checkTheNumbers.length; i++) {
+            if (checkTheNumbers[i] < 6) {
+                checkTheNumbers[i] = checkTheNumbers[i] * 2;
+            } else {
+                checkTheNumbers[i] = checkTheNumbers[i];
+            }
+            System.out.println(Arrays.toString(checkTheNumbers));
         }
+        int[][] matrix = new int[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (matrix[i][j] == matrix[0][0]) {
+                    matrix[i][j] = 1;
+                } else if (matrix[i][j] == matrix[0][2]) {
+                    matrix[i][j] = 1;
+                } else if (matrix[i][j] == matrix[1][1]) {
+                    matrix[i][j] = 1;
+                } else if (matrix[i][j] == matrix[2][0]) {
+                    matrix[i][j] = 1;
+                } else if (matrix[i][j] == matrix[2][2]) {
+                    matrix[i][j] = 1;
+                } else {
+                    matrix[i][j] = matrix[i][j];
+                }
+            }
         }
-        //Написать метод, которому в качестве параметра передается строка, обозначающая имя.
-    // Метод должен вывести в консоль сообщение «Привет, указанное_имя!»
-    public static void greeting (String your_name){
-        System.out.println("Привет, " + your_name);
+        System.out.println(matrix[0][0]);
+        System.out.println(matrix[1][1]);
+        System.out.println(matrix[0][2]);
+        System.out.println(matrix[2][0]);
+        System.out.println(matrix[2][2]);
+
+        int[] methodFindMaxAndMin = new int[]{1,90,4};
+        int max = 0;
+        int min = 0;
+            if (methodFindMaxAndMin[0] < methodFindMaxAndMin[1]) {
+                    max = methodFindMaxAndMin[1];
+                    min = methodFindMaxAndMin[0];
+            } else if (methodFindMaxAndMin[0] < methodFindMaxAndMin[2]) {
+                max = methodFindMaxAndMin[1];
+                min = methodFindMaxAndMin[0];
+            } else if (methodFindMaxAndMin[1] < methodFindMaxAndMin[2]){
+                min = methodFindMaxAndMin[1];
+            }
+            System.out.println(max);
+            System.out.println(min);
+        }
+
     }
 
-
-    //*Написать метод, который определяет, является ли год високосным, и выводит сообщение в консоль.
-    // Каждый 4-й год является високосным, кроме каждого 100-го, при этом каждый 400-й – високосный.
-        /*  передать вводимое из консоли число
-        поделить на четыре - исключить каждый 100 кроме 400
-         */
-    public static void isLeapYear(int year) {
-        if (year % 4 == 0 && year % 100 != 0 && year % 400 == 0) {
-            System.out.println("Год високосный");
-        } else {
-            System.out.println("Год не високосный");
-        }
-    }
-    }
