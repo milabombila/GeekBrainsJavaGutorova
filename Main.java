@@ -2,77 +2,46 @@ package geekbrains;
 
 import org.w3c.dom.ls.LSOutput;
 
-import java.util.Arrays;
+import java.util.Scanner;
 
-//  System.out.println(Arrays.toString(arr));
 public class Main {
-
+    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int[] changeOneToZero = new int[]{1, 1, 1, 0, 0, 0};
-        for (int i = 0; i < changeOneToZero.length; i++) {
-            if (changeOneToZero[i] == 0) {
-                changeOneToZero[i] = 1;
-            } else {
-                changeOneToZero[i] = 0;
-            }
-        }
-        System.out.println(Arrays.toString(changeOneToZero));
 
-        int[] putTheNumbers = new int[8];
-        for (int i = 0; i < putTheNumbers.length; i++) {
-            putTheNumbers[i] = i * 3;
-            System.out.println(Arrays.toString(putTheNumbers));
-        }
-
-        int[] checkTheNumbers = new int[]{1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
-        for (int i = 0; i < checkTheNumbers.length; i++) {
-            if (checkTheNumbers[i] < 6) {
-                checkTheNumbers[i] = checkTheNumbers[i] * 2;
-            } else {
-                checkTheNumbers[i] = checkTheNumbers[i];
-            }
-            System.out.println(Arrays.toString(checkTheNumbers));
-        }
-        int[][] matrix = new int[3][3];
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (matrix[i][j] == matrix[0][0]) {
-                    matrix[i][j] = 1;
-                } else if (matrix[i][j] == matrix[0][2]) {
-                    matrix[i][j] = 1;
-                } else if (matrix[i][j] == matrix[1][1]) {
-                    matrix[i][j] = 1;
-                } else if (matrix[i][j] == matrix[2][0]) {
-                    matrix[i][j] = 1;
-                } else if (matrix[i][j] == matrix[2][2]) {
-                    matrix[i][j] = 1;
-                } else {
-                    matrix[i][j] = matrix[i][j];
-                }
-            }
-        }
-        System.out.println(matrix[0][0]);
-        System.out.println(matrix[1][1]);
-        System.out.println(matrix[0][2]);
-        System.out.println(matrix[2][0]);
-        System.out.println(matrix[2][2]);
-
-        int[] methodFindMaxAndMin = new int[]{1,90,4};
-        int max = 0;
-        int min = 0;
-            if (methodFindMaxAndMin[0] < methodFindMaxAndMin[1]) {
-                    max = methodFindMaxAndMin[1];
-                    min = methodFindMaxAndMin[0];
-            } else if (methodFindMaxAndMin[0] < methodFindMaxAndMin[2]) {
-                max = methodFindMaxAndMin[1];
-                min = methodFindMaxAndMin[0];
-            } else if (methodFindMaxAndMin[1] < methodFindMaxAndMin[2]){
-                min = methodFindMaxAndMin[1];
-            }
-            System.out.println(max);
-            System.out.println(min);
-        }
+        // Написать программу, которая загадывает случайное число от 0 до 9 и пользователю дается 3 попытки
+        // угадать это число. При каждой попытке компьютер должен сообщить,
+        // больше ли указанное пользователем число, чем загаданное, или меньше.
+        // После победы или проигрыша выводится запрос
+        // – «Повторить игру еще раз? 1 – да / 0 – нет»(1 – повторить, 0 – нет).
 
     }
+
+    public static void playTheGame() {
+        int playAgain;
+        do {
+            int min = -10;
+            int max = 10;
+            int x = (int) (Math.random() * (max - min) + min);
+            int c = 3;
+            System.out.println(x);
+            System.out.println("Try to guess the number x. Hint № 1: -10 < x < 10. You have three try");
+            int a = scanner.nextInt();
+            for (int b = 0; c > b; b++)
+                if (a < x) {
+                    System.out.println("Nope. Try one more time. Hint № 2: x bigger than your number");
+                    a = scanner.nextInt();
+                } else if (a > x) {
+                    System.out.println("Nope. Try one more time. Hint № 2: x less than your number");
+                    a = scanner.nextInt();
+                } else {
+                    System.out.println("Yep. You are right!");
+                    break;
+                }
+            System.out.println("Sorry =(");
+            System.out.println("Do you wanna play again? 1 – yes / 0 – no");
+            playAgain = scanner.nextInt();
+        } while (playAgain == 1);
+    }
+}
 
